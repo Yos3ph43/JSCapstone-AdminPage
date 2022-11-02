@@ -1,0 +1,218 @@
+@mixin Text($fs, $fw, $c, $c-hover: $c) {
+  font-size: $fs;
+  font-weight: $fw;
+  color: $c;
+  &:hover {
+    color: $c-hover;
+  }
+}
+@mixin Button($bg, $bor, $radius, $pad, $shadow) {
+  background: $bg;
+  border: $bor;
+  border-radius: $radius;
+  padding: $pad;
+  box-shadow: $shadow;
+}
+$c1-100: #f5f9fe;
+$c1-200: #e2ebfc;
+$c1-300: #c9d8f4;
+$c1-400: #60a4f4;
+$c1-500: #2a73dd;
+$c1-600: #656774;
+$c1-700: #1d365e;
+$cWhite: #fff;
+
+$fs-xs: 0.75rem;
+$fs-base: 1rem;
+$fs-sm: 1.25rem;
+$fs-md: 1.5rem;
+$fs-lg: 2rem;
+$fs-xl: 2.25rem;
+$fs-3xl: 5rem;
+
+$fw-light: 300;
+$fw-regular: 400;
+$fw-semibold: 600;
+$fw-bold: 700;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito Sans", sans-serif;
+}
+a {
+  text-decoration: none;
+  background-color: transparent;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 15px;
+}
+body {
+  position: relative;
+  background: #f5f9fe;
+}
+.btn {
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: #0e53a1;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    transform: scale(105%);
+  }
+}
+
+.header {
+  background: $c1-100;
+  box-shadow: 0 2px 4px $c1-200;
+  z-index: 69;
+  width: 100%;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    height: 88px;
+    align-items: center;
+  }
+  .logo {
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: $fs-base;
+    // font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    @include Text($fs-lg, $fw-bold, $c1-500);
+  }
+  .right {
+    display: flex;
+    justify-content: space-between;
+    .navbar {
+      margin-right: 20px;
+      a {
+        @include Text(1.1rem, $fw-semibold, $c1-700, $c1-500);
+        margin: 15px;
+        transition: 0.2s;
+        position: relative;
+        //parent selector &
+        transition: all 0.3s;
+
+        &.active {
+          color: $c1-500;
+        }
+      }
+    }
+  }
+}
+
+.product {
+  .title {
+    text-align: center;
+    .container {
+      padding: 30px;
+    }
+  }
+  padding-top: 3rem;
+  table,
+  tr,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px 20px;
+  }
+  .table {
+    width: 100%;
+    img {
+      width: 80px;
+    }
+
+    .btn_delete {
+      background: rgb(233, 0, 0);
+    }
+    .btn_update {
+      background: $c1-400;
+    }
+    .btn_update,
+    .btn_delete {
+      color: #fff;
+      border: 0;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+  }
+}
+
+#product_id {
+  display: none;
+}
+.update_form {
+  .openForm {
+    margin-bottom: 10px;
+  }
+
+  .manage {
+    display: none;
+    position: fixed;
+    z-index: 69;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(0, 0, 0, 0.7);
+    transition: all 0.3s;
+    .form {
+      position: relative;
+      z-index: 96;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: $c1-100;
+      border: 1px solid $c1-700;
+      border-radius: 10px;
+      width: 50%;
+      padding: 50px 30px;
+      .form_wrap {
+        font-size: 1rem;
+        max-width: 70%;
+        margin: 0 auto;
+        input,
+        textarea {
+          min-width: 80%;
+          padding: 5px 10px;
+        }
+        .warn_span {
+          color: red;
+        }
+        .form_input {
+          display: flex;
+          justify-content: space-between;
+          padding-top: 15px;
+          margin-top: 15px;
+          border-top: 1px solid rgb(0, 0, 0, 0.2);
+          p {
+            // font-size: 1rem;
+            font-weight: 600;
+          }
+        }
+        .closeForm {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          background: rgb(141, 0, 0);
+          color: rgb(255, 240, 240);
+          border: 1px solid transparent;
+          padding: 5px 10px;
+        }
+        .btn_control {
+          display: flex;
+          justify-content: flex-end;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}

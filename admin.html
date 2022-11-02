@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <!-- ggfont -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- header -->
+    <header class="header">
+      <div class="container">
+        <a href="" class="logo">CyberPhone</a>
+        <div class="right">
+          <nav class="navbar">
+            <a href="#" class="active">Admin</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- product -->
+    <section class="product">
+      <header class="title">
+        <div class="container">
+          <h2>Quản lý sản phẩm</h2>
+        </div>
+      </header>
+      <main class="main">
+        <div class="container">
+          <div class="update_form">
+            <button class="btn openForm" id="openForm">Thêm sản phẩm</button>
+            <!--input form -->
+            <div class="manage" id="input_form">
+              <form action="" class="form">
+                <div class="form_wrap">
+                  <button type="button" class="btn closeForm" id="closeForm">
+                    X
+                  </button>
+                  <button type="reset" id="btnReset"></button>
+                  <input type="text" id="product_id" disabled="true" />
+
+                  <div class="form_input">
+                    <p>Tên sp:</p>
+                    <input
+                      type="text"
+                      placeholder="Tên sản phẩm"
+                      id="product_name"
+                    />
+                  </div>
+                  <span class="warn_span" id="warn_name"></span>
+
+                  <div class="form_input">
+                    <p>Giá:</p>
+                    <input
+                      type="number"
+                      placeholder="Giá sản phẩm"
+                      id="product_price"
+                    />
+                  </div>
+                  <span class="warn_span" id="warn_price"></span>
+
+                  <div class="form_input">
+                    <p>Hình ảnh:</p>
+                    <input
+                      type="text"
+                      placeholder="Link hình ảnh"
+                      id="product_img"
+                    />
+                  </div>
+                  <span class="warn_span" id="warn_img"></span>
+
+                  <div class="form_input">
+                    <p>Màn hình:</p>
+                    <input
+                      type="text"
+                      placeholder="Màn hình"
+                      id="product_screen"
+                    />
+                  </div>
+                  <span class="warn_span" id="warn_screen"></span>
+
+                  <div class="form_input">
+                    <p>Camera sau:</p>
+                    <input
+                      type="text"
+                      placeholder="Camera sau"
+                      id="product_backCamera"
+                    />
+                  </div>
+                  <span class="warn_span" id="warn_backCamera"></span>
+
+                  <div class="form_input">
+                    <p>Camera trước</p>
+                    <input
+                      type="text"
+                      placeholder="Camera trước"
+                      id="product_frontCamera"
+                    />
+                  </div>
+                  <span class="warn_span" id="warn_frontCamera"></span>
+
+                  <div class="form_input">
+                    <p>Hãng sx:</p>
+                    <select id="product_type">
+                      <option value="">Chọn hãng sx</option>
+                      <option value="samsung">Samsung</option>
+                      <option value="iphone">Iphone</option>
+                    </select>
+                  </div>
+                  <span class="warn_span" id="warn_type"></span>
+
+                  <div class="form_input">
+                    <p>Mô tả</p>
+                    <textarea
+                      id="product_desc"
+                      cols="30"
+                      rows="10"
+                      placeholder="Mô tả sp..."
+                    ></textarea>
+                  </div>
+                  <span class="warn_span" id="warn_desc"></span>
+
+                  <div class="btns btn_control">
+                    <button type="button" class="btn" id="createProduct">
+                      Thêm sản phẩm
+                    </button>
+                    <button type="button" class="btn" id="updateProduct">
+                      Cập Nhật
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- table -->
+
+          <div class="product_table">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Tên Sản Phẩm</th>
+                  <th>Giá</th>
+                  <th>Hình Ảnh</th>
+                  <th>Mô Tả</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="productList"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </section>
+    <!-- form -->
+    <div class="container"></div>
+    <!-- axios -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"
+      integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./models/product.js"></script>
+    <script src="./js/admin.js"></script>
+  </body>
+</html>
